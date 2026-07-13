@@ -1,0 +1,109 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-hof-charcoal: #0f1011;
+  --color-hof-slate: #1a1c1e;
+  --color-hof-black: #070708;
+  --color-hof-yellow: #f1c40f;
+  --color-hof-green: #2ecc71;
+  --color-hof-red: #e74c3c;
+  --font-heading: 'Permanent Marker', cursive;
+  --font-doodle: 'Caveat', cursive;
+  --font-body: 'Inter', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-hof-charcoal text-white font-body overflow-x-hidden;
+    /* Clean, ultra-premium dark slate chalkboard look */
+    background-color: #0d0e10;
+    background-image: 
+      radial-gradient(at 50% 0%, #18191d 0px, transparent 60%),
+      radial-gradient(at 0% 100%, #090a0c 0px, transparent 60%);
+    background-attachment: fixed;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-hof-black);
+}
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-hof-yellow);
+}
+
+/* Neon Chalk Glowing Effects */
+.chalk-glow-yellow {
+  text-shadow: 0 0 10px rgba(241, 196, 15, 0.4), 0 0 20px rgba(241, 196, 15, 0.2);
+}
+
+.chalk-glow-red {
+  text-shadow: 0 0 10px rgba(231, 76, 60, 0.4), 0 0 20px rgba(231, 76, 60, 0.2);
+}
+
+.chalk-glow-green {
+  text-shadow: 0 0 10px rgba(46, 204, 113, 0.4), 0 0 20px rgba(46, 204, 113, 0.2);
+}
+
+/* Premium Card Designs with Glowing Board Borders */
+.board-card {
+  background: rgba(26, 28, 30, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: 16px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.board-card:hover {
+  border-color: rgba(241, 196, 15, 0.3);
+  box-shadow: 0 12px 40px 0 rgba(241, 196, 15, 0.1);
+  transform: translateY(-5px);
+}
+
+/* Rough Sketches / Doodle Underlines */
+.rough-underline {
+  position: relative;
+}
+.rough-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 6px;
+  background: currentColor;
+  clip-path: polygon(0% 20%, 50% 80%, 100% 10%, 100% 70%, 50% 95%, 0% 80%);
+  opacity: 0.8;
+}
+
+/* Keyframes for micro-animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: 2.5s;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
